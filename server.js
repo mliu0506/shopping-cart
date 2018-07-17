@@ -10,7 +10,7 @@ var bodyParser = require('body-parser');
 var app = require('express')();
 var handlebars = require('express-handlebars');
 
-var port = 3000;
+var PORT = process.env.PORT || 3000;
 var connection;
 
 app.engine('handlebars', handlebars({ 
@@ -121,9 +121,9 @@ app.put('/', (request, response) => {
     response.send("This was from a put request");
 });
 
-app.listen(port, () => {
+app.listen(PORT, () => {
 
     connection = db();
     connection.connect();
-    console.log(`Connected on port: ${port}`)
+    console.log(`Connected on port: ${PORT}`)
 });
